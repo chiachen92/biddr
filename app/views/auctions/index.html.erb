@@ -1,0 +1,25 @@
+<h1>Welcome to Biddr!</h1>
+<% @auctions.each do |auction| %>
+  <div class="row">
+    <div class="col-sm-12 auction-title">
+      <h5><%= link_to auction.title, auction_path(auction) %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <p>Description:</p>
+      <%= auction.details %>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      Reserve price: <%= number_to_currency(auction.reserve_price) %>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      End date: <%= auction.end_date %>
+    </div>
+  </div>
+  <hr>
+<% end %>
