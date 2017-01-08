@@ -3,4 +3,11 @@ Rails.application.routes.draw do
 
   root "auctions#index"
   resources :auctions
+  resources :users, only: [:new, :create]
+
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
+
+
 end
