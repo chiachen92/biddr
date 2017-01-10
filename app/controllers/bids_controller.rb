@@ -1,6 +1,6 @@
 class BidsController < ApplicationController
 
-  before_action :authenticate_user
+  before_action :authenticate_user!
   def index
     @bids = current_user.bids
   end
@@ -12,9 +12,9 @@ class BidsController < ApplicationController
     @bid.auction = @auction
     @bid.user = current_user
     if @auction.user == current_user
-      redirect_to auction_path, alert: "Cannot bid on your own auction"
-      elsif @auction.bids.count > 0 && params[:bid][:amount].to_i < @auction_path(@auction), alert:
-        "Bid must be higher than current bid"
+      redirect_to auction_path(@auction), alert: "Cannot bid on your own auction"
+    elsif @bid.price.to_i < @auction.reserve_price.to_i
+        redirect_to auction_path(@auction), alert: "Bid must be higher than current bid"
         elsif @bid.save
           redirect_to auction_path(@auction), notice: "Bid created!"
           else
@@ -22,9 +22,11 @@ class BidsController < ApplicationController
             redirect_to auction_path
           end
         end
-      end
-    end
-  end
+
+
+
+
+
 
 
 

@@ -13,16 +13,12 @@
     <% end %>
   </div>
   <div class="col-sm-3">
-    <% if @auction.bids.length > 0 %>
-      <div class="member-sidebar">
         <h4>Biddings:</h4>
         <% @auction.bids.reverse.each do |bid| %>
           <div>
             <li> <%= bid.user.first_name %>:  <%= number_to_currency(bid.price) %></li>
           </div>
         <% end %>
-      </div>
-    <% end %>
   </div>
 </div>
 <hr>
