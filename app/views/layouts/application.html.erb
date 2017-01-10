@@ -29,7 +29,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="icon">Hello <%=current_user.first_name %><span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                
+
                     <% else %>
                     <li><%= link_to 'Sign in', new_session_path, id: "icon" %></li>
                     <li><%= link_to 'Sign up', new_user_path, id: "icon" %></li>
@@ -40,6 +40,10 @@
           </div>
         </div>
       </nav>
+      <div class="flash-message">
+        <%= flash[:notice] || flash[:alert] %>
+      </div>
+      <div class="container-fluid">
     <%= yield %>
   </body>
 </html>
