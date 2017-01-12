@@ -55,13 +55,10 @@ class Auction < ApplicationRecord
     bids.empty? ? 0 : bids.first.price
   end
 
+  private
 
-
-
-    private
-
-    def set_defaults
-      self.highest_bid ||= 0
-    end
+  def set_defaults
+    self.highest_bid ||= 0
+  end
 
 end
