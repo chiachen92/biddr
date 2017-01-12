@@ -1,0 +1,7 @@
+<h1>My bids</h1>
+<br>
+<% @bids.each do |bid| %>
+  <%= bid.auction.title %>
+  <%= number_to_currency(bid.price) %>
+  <hr>
+<% end %>

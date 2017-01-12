@@ -1,14 +1,13 @@
 <h1>Welcome to Biddr!</h1>
 <% @auctions.each do |auction| %>
   <div class="row">
-    <div class="col-sm-12 auction-title">
-      <h5><%= link_to auction.title, auction_path(auction) %></h5>
-    </div>
+  <div>
+  <h5>Title:<%= link_to auction.title, auction_path(auction) %></h5>
+  </div>
   </div>
   <div class="row">
     <div>
-      <p>Description:</p>
-      <%= auction.details %>
+      Details:<%= auction.details %>
     </div>
   </div>
   <div class="row">

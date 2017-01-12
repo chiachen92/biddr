@@ -42,6 +42,22 @@ class Auction < ApplicationRecord
     end
   end
 
+  def current_bid
+    return unless bids.present?
+    bids.first
+  end
+
+  def previous_bids
+    bids.where.not(price: current_price)
+  end
+
+  def current_price
+    bids.empty? ? 0 : bids.first.price
+  end
+
+
+
+
     private
 
     def set_defaults
