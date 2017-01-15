@@ -1,4 +1,4 @@
-<%= @bid.errors.full_messages.join(', ') %>
+<!-- <%= @bid.errors.full_messages.join(', ') %>
 <div>
 <%= form_for [@auction, @bid], remote: true do |f| %>
   <div>
@@ -7,4 +7,16 @@
   <%= f.submit 'Bid' %>
 <% end %>
 <hr/>
+</div> -->
+
+<% if @error_message.present? %>
+  <div><%= @error_message %></div>
+<% end %>
+<div class="col-sm-3">
+      <h4>Previous Bids:</h4>
+      <% @auction.bids.reverse.each do |bid| %>
+        <div>
+          <li> <%= bid.user.first_name %>:  <%= number_to_currency(bid.price) %></li>
+        </div>
+      <% end %>
 </div>

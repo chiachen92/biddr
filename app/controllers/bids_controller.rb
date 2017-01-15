@@ -14,15 +14,16 @@ class BidsController < ApplicationController
     @previous_bid = @auction.current_bid
     respond_to do |format|
       if @auction.user == current_user
-        redirect_to auction_path(@auction), alert: "Cannot bid on your own auction"
+        @error_message = "Cannot bid on your own auction"
+        format.html { redirect_to auction_path(@auction), alert: "Cannot bid on your own auction"}
+        format.js {render :create_failure}
       elsif (@auction.bids.present? && params[:bid][:price].to_i < @auction.bids.last.price)
-        redirect_to auction_path(@auction), alert: "Bid must be higher than current bid"
-      elsif @bid.save
+        @error_message = "Bid must be higher than current bid"
+        format.html { redirect_to auction_path(@auction), alert: "Bid must be higher than current bid"}
+        format.js {render :create_failure}
+      else
         format.html { redirect_to auction_path(@auction), notice: "Bid created!"}
         format.js { render :create_success}
-      else
-        format.html {render "auctions/show"}
-        format.js {render :create_failure}
       end
     end
   end
