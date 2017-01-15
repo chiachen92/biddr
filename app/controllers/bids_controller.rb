@@ -22,8 +22,10 @@ class BidsController < ApplicationController
         format.html { redirect_to auction_path(@auction), alert: "Bid must be higher than current bid"}
         format.js {render :create_failure}
       else
+        @bid.save
+        @auction = Auction.find params[:auction_id]
         format.html { redirect_to auction_path(@auction), notice: "Bid created!"}
-        format.js { render :create_success}
+        format.js { render :create_success }
       end
     end
   end

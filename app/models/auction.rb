@@ -52,7 +52,7 @@ class Auction < ApplicationRecord
   end
 
   def current_price
-    bids.empty? ? 0 : bids.first.price
+    bids.empty? ? 0 : bids.last.price
   end
 
   private
