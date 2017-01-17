@@ -1,1 +1,2 @@
-$("#bid-form").html("<%= j render 'form' %>");
+$("#bid-form").html("<%= j render 'form', auction_bids: @auction.bids.order("price DESC").limit(10) %>");
+$("#auction-auction").html("<%= j render 'auctions/auction', auction: @auction %>")

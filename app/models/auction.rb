@@ -8,7 +8,7 @@ class Auction < ApplicationRecord
   validates :title, presence: true
   validates :reserve_price, presence: true,
                             numericality: { greater_than: 0 }
-  # validates_date :end_date, after: lambda { Date.current}
+
 
   include AASM
 

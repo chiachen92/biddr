@@ -1,3 +1,4 @@
 $("#bids").prepend("<%= j(render('/bids/bid', {bid: @bid})) %>");
 <% @bid = Bid.new %>
 $("#bid-form").html("<%= j render 'form', auction_bids: @auction.bids.order("price DESC").limit(10) %>");
+$("#auction-auction").html("<%= j render 'auctions/auction', auction: @auction %>")
